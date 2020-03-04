@@ -8,7 +8,7 @@ class Weather(
     @SerializedName("name")
     val city: String,
     @SerializedName("weather")
-    val weatherInfo: WeatherInfo,
+    val weatherInfo: List<WeatherInfo>,
     @SerializedName("main")
     val weatherDetails: WeatherDetails,
     @SerializedName("sys")
