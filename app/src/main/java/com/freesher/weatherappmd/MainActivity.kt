@@ -2,6 +2,7 @@ package com.freesher.weatherappmd
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.freesher.weatherappmd.search.SearchFragment
 import com.freesher.weatherappmd.utils.FragmentCommunication
 
 class MainActivity : AppCompatActivity(), FragmentCommunication {
