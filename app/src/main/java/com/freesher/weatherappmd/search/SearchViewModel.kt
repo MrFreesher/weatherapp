@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class SearchViewModel(private val repository: WeatherRepository):ViewModel() {
 
 
-    private var _loading: MutableLiveData<Boolean> = MutableLiveData(false)
+    private var _loading: MutableLiveData<Boolean> = MutableLiveData()
     private var _weather:MutableLiveData<Weather> = MutableLiveData()
 
     val loading:LiveData<Boolean>

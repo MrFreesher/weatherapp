@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.freesher.weatherappmd.R
 import com.freesher.weatherappmd.network.WeatherApi
 import com.freesher.weatherappmd.network.WeatherRepository
+import com.freesher.weatherappmd.utils.FragmentCommunication
 import kotlinx.android.synthetic.main.fragment_search.*
 
 /**
@@ -46,9 +47,11 @@ class SearchFragment : Fragment() {
             if(it == true){
                 progressBar.visibility = View.VISIBLE
                 Log.d("MyAPP","Loading on")
-            }else{
+            }else if(it == false){
                 progressBar.visibility = View.GONE
                 Log.d("MyAPP","Loading off")
+                val activity  = activity as FragmentCommunication
+                activity.replaceFragment("details")
             }
         })
 

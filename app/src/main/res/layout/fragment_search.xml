@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
 
 
-
+        android:visibility="gone"
         android:max="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

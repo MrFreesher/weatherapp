@@ -4,108 +4,97 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsFragment">
+    android:background="@color/colorAccent"
+    tools:context=".details.DetailsFragment">
 
     <TextView
-        android:id="@+id/cityLabel"
-        android:layout_width="wrap_content"
+        android:id="@+id/measureHeader"
+        style="@style/HeaderText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Miasto"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:text="Pogoda z dnia 2.03.2020"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Miasto" />
+        tools:text="Pogoda z dnia 2.03.2020" />
 
-    <TextView
-        android:id="@+id/cityValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+    <ImageView
+        android:src="@drawable/rain"
+        android:scaleType="fitEnd"
+        android:id="@+id/iconIV"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintStart_toEndOf="@+id/cityLabel"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Gliwice" />
-
-    <TextView
-        android:id="@+id/temperaturLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Temperatura"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cityLabel"
-        tools:text="Temperatura" />
+        app:layout_constraintTop_toBottomOf="@+id/measureHeader" />
 
     <TextView
-        android:id="@+id/temperatureValue"
+        android:id="@+id/descriptionTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/temperaturLabel"
-        app:layout_constraintTop_toBottomOf="@+id/cityValue"
-        tools:text="38.7" />
+        tools:text="Raining"
+        android:text="Raining"
+        style="@style/HeaderText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iconIV"
+        app:layout_constraintTop_toBottomOf="@+id/measureHeader" />
 
     <TextView
+        android:id="@+id/shortDescriptionTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="It's raining dance"
+        android:textSize="22sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/iconIV"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
+
+    <include
+        android:id="@+id/temperatureLabel"
+        layout="@layout/grid"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconIV" />
+
+    <include
         android:id="@+id/pressureLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Ciśnienie"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperaturLabel"
-        tools:text="Ciśnienie" />
+        layout="@layout/grid"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
 
-    <TextView
-        android:id="@+id/pressureValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="900"
-        app:layout_constraintStart_toEndOf="@+id/pressureLabel"
-        app:layout_constraintTop_toBottomOf="@+id/temperatureValue" />
-
-    <TextView
-        android:id="@+id/sunriseLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Wschód słońca"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pressureLabel" />
-
-    <TextView
-        android:id="@+id/sunriseValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/sunriseLabel"
-        app:layout_constraintTop_toBottomOf="@+id/pressureValue" />
-
-    <TextView
+        app:layout_constraintTop_toBottomOf="@+id/iconIV" />
+    <include
         android:id="@+id/sunsetLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Zachód słońca"
+        layout="@layout/grid"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sunriseLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/temperatureLabel" />
 
-    <TextView
-        android:id="@+id/sunsetValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintStart_toEndOf="@+id/sunsetLabel"
-        app:layout_constraintTop_toBottomOf="@+id/sunriseValue" />
+    <include
+        android:id="@+id/sunriseLabel"
+        layout="@layout/grid"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
 
-
+        app:layout_constraintTop_toBottomOf="@+id/pressureLabel" />
 </androidx.constraintlayout.widget.ConstraintLayout>
