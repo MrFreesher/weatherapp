@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="Type city to see weather"
+        android:text="@string/type_city_label"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,8 +25,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textSize="18sp"
         android:backgroundTint="@color/colorPrimaryDark"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/cityLabel"
         app:layout_constraintStart_toStartOf="@+id/cityLabel"
         app:layout_constraintTop_toBottomOf="@+id/cityLabel" />
@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Search"
+        android:text="@string/search_label"
         app:layout_constraintEnd_toEndOf="@+id/cityInput"
         app:layout_constraintStart_toStartOf="@+id/cityInput"
         app:layout_constraintTop_toBottomOf="@+id/cityInput" />
@@ -48,8 +48,8 @@
         android:layout_height="wrap_content"
 
 
-        android:visibility="gone"
         android:max="100"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -59,10 +59,10 @@ class SearchFragment : Fragment() {
         searchViewModel.loading.observe(this, Observer {
             if (it == true) {
                 progressBar.visibility = View.VISIBLE
-                Log.d("MyAPP", "Loading on")
+
             } else if (it == false) {
                 progressBar.visibility = View.GONE
-                Log.d("MyAPP", "Loading off")
+
 
             }
         })
@@ -73,7 +73,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val activity = activity as MainActivity
-        activity.supportActionBar?.title = "Weather App"
+        activity.supportActionBar?.title = getString(R.string.app_title)
         activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         activity.supportActionBar?.setDisplayShowHomeEnabled(false)
         // Inflate the layout for this fragment
@@ -91,7 +91,7 @@ class SearchFragment : Fragment() {
                     searchViewModel.getWeather(city)
                 } else {
                     AlertDialog.Builder(context)
-                        .setMessage("App required Internet Connection to work")
+                        .setMessage(getString(R.string.internet_connection_message))
 
                         .setNeutralButton(
                             "Ok"
@@ -99,13 +99,13 @@ class SearchFragment : Fragment() {
                         ) { dialog, _ -> dialog?.dismiss() }.create().show()
                 }
             } else {
-                cityInput.error = "This field can not be empty"
+                cityInput.error = getString(R.string.empty_field_message)
             }
         }
 
     }
 
-    fun validateInput(input: String): Boolean {
+    private fun validateInput(input: String): Boolean {
         if (TextUtils.isEmpty(input)) {
             return false
         }

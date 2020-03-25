@@ -35,11 +35,7 @@ class MainActivity : AppCompatActivity(), FragmentCommunication {
         super.onBackPressed()
        replaceFragment("search",null)
     }
-    override fun onPopBackstack() {
-            Log.d("MyApp","backstack")
-            supportFragmentManager.popBackStack()
 
-    }
 
 
 

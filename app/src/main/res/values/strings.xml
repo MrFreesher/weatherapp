@@ -3,4 +3,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="internet_connection_message">App required Internet Connection to work</string>
+    <string name="empty_field_message">This field can not be empty</string>
+    <string name="app_title">Weather App</string>
+    <string name="type_city_label">Type city to see weather</string>
+    <string name="search_label">Search</string>
 </resources>

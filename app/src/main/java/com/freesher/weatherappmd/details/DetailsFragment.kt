@@ -35,9 +35,9 @@ class DetailsFragment : Fragment() {
         binding.shortDescription = arguments.getString("shortDescription")
         val icon = arguments.getString("icon")
         val url = "${AppConstants.BASE_IMAGE_URL}/${icon}.png"
-        Log.d("MyApp",url)
+
         Picasso.get().load(url).into(binding.iconIV)
-        Log.d("MyApp",arguments.getString("calculationDate"))
+
         val root = binding.root
 
         val activity = activity as MainActivity
@@ -56,7 +56,7 @@ class DetailsFragment : Fragment() {
 
         return when (item.itemId) {
             android.R.id.home -> {
-                Log.d("MyApp","back")
+
                 activity?.onBackPressed()
                 true
             }
