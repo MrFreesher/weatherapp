@@ -3,7 +3,7 @@ package com.freesher.weatherappmd.data
 import com.google.gson.annotations.SerializedName
 
 class Weather(
-    @SerializedName("date")
+    @SerializedName("dt")
     val calculationDate: String,
     @SerializedName("name")
     val city: String,

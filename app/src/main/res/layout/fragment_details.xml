@@ -1,100 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context=".details.DetailsFragment">
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    >
 
-    <TextView
-        android:id="@+id/measureHeader"
-        style="@style/HeaderText"
+    <data>
+        <variable
+            name="temperatureValue"
+            type="java.lang.String" />
+        <variable
+            name="pressureValue"
+            type="java.lang.String" />
+        <variable
+            name="sunsetValue"
+            type="java.lang.String" />
+        <variable
+            name="sunriseValue"
+            type="java.lang.String" />
+        <variable
+            name="calculationDate"
+            type="java.lang.String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:gravity="center"
-        android:text="Pogoda z dnia 2.03.2020"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Pogoda z dnia 2.03.2020" />
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent"
+        tools:context=".details.DetailsFragment">
 
-    <ImageView
-        android:src="@drawable/rain"
-        android:scaleType="fitEnd"
-        android:id="@+id/iconIV"
-        android:layout_width="125dp"
-        android:layout_height="125dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/measureHeader" />
+        <TextView
+            android:id="@+id/measureHeader"
+            style="@style/HeaderText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:text="@{`Pogodnia z dnia  ` + calculationDate}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pogoda z dnia 2.03.2020" />
 
-    <TextView
-        android:id="@+id/descriptionTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        tools:text="Raining"
-        android:text="Raining"
-        style="@style/HeaderText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iconIV"
-        app:layout_constraintTop_toBottomOf="@+id/measureHeader" />
+        <ImageView
+            android:src="@drawable/rain"
+            android:scaleType="fitEnd"
+            android:id="@+id/iconIV"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/measureHeader" />
 
-    <TextView
-        android:id="@+id/shortDescriptionTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="It's raining dance"
-        android:textSize="22sp"
-        android:textStyle="italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iconIV"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
+        <TextView
+            android:id="@+id/descriptionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            tools:text="Raining"
+            android:text="Raining"
+            style="@style/HeaderText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconIV"
+            app:layout_constraintTop_toBottomOf="@+id/measureHeader" />
 
-    <include
-        android:id="@+id/temperatureLabel"
-        layout="@layout/grid"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iconIV" />
+        <TextView
+            android:id="@+id/shortDescriptionTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="It's raining dance"
+            android:textSize="22sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iconIV"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTV" />
 
-    <include
-        android:id="@+id/pressureLabel"
-        layout="@layout/grid"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        <include
 
-        app:layout_constraintTop_toBottomOf="@+id/iconIV" />
-    <include
-        android:id="@+id/sunsetLabel"
-        layout="@layout/grid"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginLeft="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/temperatureLabel" />
+            android:id="@+id/temperatureLabel"
+            layout="@layout/grid"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iconIV" />
 
-    <include
-        android:id="@+id/sunriseLabel"
-        layout="@layout/grid"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginRight="24dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        <include
 
-        app:layout_constraintTop_toBottomOf="@+id/pressureLabel" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:id="@+id/pressureLabel"
+            layout="@layout/grid"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/iconIV" />
+
+        <include
+
+            android:id="@+id/sunsetLabel"
+            layout="@layout/grid"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/temperatureLabel" />
+
+        <include
+
+
+            android:id="@+id/sunriseLabel"
+            layout="@layout/grid"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@+id/pressureLabel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
