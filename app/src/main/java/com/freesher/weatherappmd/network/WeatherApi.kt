@@ -11,7 +11,7 @@ import retrofit2.http.Query
 
 interface WeatherApi {
     @GET("weather")
-    suspend fun getWeather(@Query("q") city: String) : Weather
+    suspend fun getWeather(@Query("q") city: String,@Query("units") units:String="metric") : Weather
 
     companion object{
         operator fun invoke():WeatherApi{
