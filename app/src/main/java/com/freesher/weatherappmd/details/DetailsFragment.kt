@@ -9,12 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.freesher.weatherappmd.AppConstants
 import com.freesher.weatherappmd.MainActivity
-import com.freesher.weatherappmd.utils.Utils
+import com.freesher.weatherappmd.utils.DateUtils
 import com.freesher.weatherappmd.databinding.FragmentDetailsBinding
-import com.freesher.weatherappmd.utils.FragmentCommunication
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.Transformation
-import kotlinx.android.synthetic.main.fragment_details.*
 
 class DetailsFragment : Fragment() {
 
@@ -30,10 +27,10 @@ class DetailsFragment : Fragment() {
         binding.pressureLabel.value = arguments!!.getDouble("pressure").toString()
 
         binding.sunriseLabel.label = "Sunrise time"
-        binding.sunriseLabel.value = Utils.convertTimeStampToTime(arguments!!.getString("sunriseTime"))
+        binding.sunriseLabel.value = DateUtils.convertTimeStampToTime(arguments!!.getString("sunriseTime"))
         binding.sunsetLabel.label = "Sunset time"
-        binding.sunsetLabel.value = Utils.convertTimeStampToTime(arguments!!.getString("sunsetTime"))
-        binding.calculationDate = Utils.convertTimeStampToDate(arguments.getString("calculationDate"))
+        binding.sunsetLabel.value = DateUtils.convertTimeStampToTime(arguments!!.getString("sunsetTime"))
+        binding.calculationDate = DateUtils.convertTimeStampToDate(arguments.getString("calculationDate"))
         binding.description = arguments.getString("description")
         binding.shortDescription = arguments.getString("shortDescription")
         val icon = arguments.getString("icon")

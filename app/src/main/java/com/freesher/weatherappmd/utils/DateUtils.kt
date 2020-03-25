@@ -2,7 +2,7 @@ package com.freesher.weatherappmd.utils
 
 import java.text.SimpleDateFormat
 import java.util.*
-object Utils {
+object DateUtils {
     fun convertTimeStampToTime(timestamp: String?): String {
         val sdf = SimpleDateFormat(" HH:mm")
         val netDate = Date(timestamp!!.toLong()*1000)

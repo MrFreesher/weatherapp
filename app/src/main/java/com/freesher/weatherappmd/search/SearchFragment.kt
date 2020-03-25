@@ -1,6 +1,9 @@
 package com.freesher.weatherappmd.search
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +16,7 @@ import com.freesher.weatherappmd.R
 import com.freesher.weatherappmd.network.WeatherApi
 import com.freesher.weatherappmd.network.WeatherRepository
 import com.freesher.weatherappmd.utils.FragmentCommunication
+import com.freesher.weatherappmd.utils.NetworkUtils
 import kotlinx.android.synthetic.main.fragment_search.*
 
 /**
@@ -35,24 +39,20 @@ class SearchFragment : Fragment() {
         searchViewModel.weather.observe(this, Observer {
             if (it != null) {
                 val bundle = Bundle()
-                bundle.putString("calculationDate",it.calculationDate)
-                bundle.putString("description",it.weatherInfo[0].name)
-                bundle.putString("shortDescription",it.weatherInfo[0].description)
-                bundle.putString("icon",it.weatherInfo[0].icon)
-                bundle.putDouble("temperature",it.weatherDetails.temperature)
-                bundle.putDouble("pressure",it.weatherDetails.pressure)
-                bundle.putString("sunriseTime",it.sunDetails.sunriseDate)
-                bundle.putString("sunsetTime",it.sunDetails.sunsetDate)
-                bundle.putString("city",it.city)
-
-
-
-
+                bundle.putString("calculationDate", it.calculationDate)
+                bundle.putString("description", it.weatherInfo[0].name)
+                bundle.putString("shortDescription", it.weatherInfo[0].description)
+                bundle.putString("icon", it.weatherInfo[0].icon)
+                bundle.putDouble("temperature", it.weatherDetails.temperature)
+                bundle.putDouble("pressure", it.weatherDetails.pressure)
+                bundle.putString("sunriseTime", it.sunDetails.sunriseDate)
+                bundle.putString("sunsetTime", it.sunDetails.sunsetDate)
+                bundle.putString("city", it.city)
 
 
                 val activity = activity as FragmentCommunication
 
-                activity.replaceFragment("details",bundle)
+                activity.replaceFragment("details", bundle)
             }
 
         })
@@ -67,6 +67,7 @@ class SearchFragment : Fragment() {
             }
         })
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -83,9 +84,32 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         searchBtn.setOnClickListener {
             val city = cityInput.text.toString()
-            searchViewModel.getWeather(city)
+            if (validateInput(city)) {
+                if (NetworkUtils.checkInternetAvailability(context!!.applicationContext)) {
 
+
+                    searchViewModel.getWeather(city)
+                } else {
+                    AlertDialog.Builder(context)
+                        .setMessage("App required Internet Connection to work")
+
+                        .setNeutralButton(
+                            "Ok"
+
+                        ) { dialog, _ -> dialog?.dismiss() }.create().show()
+                }
+            } else {
+                cityInput.error = "This field can not be empty"
+            }
         }
+
+    }
+
+    fun validateInput(input: String): Boolean {
+        if (TextUtils.isEmpty(input)) {
+            return false
+        }
+        return true
 
     }
 
