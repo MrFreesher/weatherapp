@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.freesher.weatherappmd.MainActivity
 import com.freesher.weatherappmd.R
 import com.freesher.weatherappmd.network.WeatherApi
 import com.freesher.weatherappmd.network.WeatherRepository
@@ -42,6 +43,7 @@ class SearchFragment : Fragment() {
                 bundle.putDouble("pressure",it.weatherDetails.pressure)
                 bundle.putString("sunriseTime",it.sunDetails.sunriseDate)
                 bundle.putString("sunsetTime",it.sunDetails.sunsetDate)
+                bundle.putString("city",it.city)
 
 
 
@@ -69,7 +71,10 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        val activity = activity as MainActivity
+        activity.supportActionBar?.title = "Weather App"
+        activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        activity.supportActionBar?.setDisplayShowHomeEnabled(false)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false)
     }

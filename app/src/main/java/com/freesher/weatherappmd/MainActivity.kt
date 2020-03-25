@@ -1,6 +1,7 @@
 package com.freesher.weatherappmd
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.freesher.weatherappmd.details.DetailsFragment
 
@@ -29,6 +30,18 @@ class MainActivity : AppCompatActivity(), FragmentCommunication {
             supportFragmentManager.beginTransaction().replace(R.id.fragContainer, fragment).addToBackStack(null).commit()
         }
     }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+       replaceFragment("search",null)
+    }
+    override fun onPopBackstack() {
+            Log.d("MyApp","backstack")
+            supportFragmentManager.popBackStack()
+
+    }
+
+
 
 
 }

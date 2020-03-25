@@ -25,6 +25,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textSize="18sp"
         android:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="@+id/cityLabel"
         app:layout_constraintStart_toStartOf="@+id/cityLabel"
